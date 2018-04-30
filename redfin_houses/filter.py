@@ -208,7 +208,8 @@ class HouseFilter(object):
 
     def to_query_str(self):
         l = list()
-        l.append('property-type=' + '+'.join([str(x.value) for x in self.property_type_list]))
+        l.append('property-type=' +
+                 '+'.join([str(x.value) for x in self.property_type_list]))
         if self._min_price:
             l.append('min-price=' + str(self._min_price.value))
         if self.max_price:
