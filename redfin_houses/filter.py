@@ -10,7 +10,7 @@ class HouseFilter(object):
         self._min_beds = None
         self._min_baths = None
         self._max_baths = None
-        self._min_sqrt = None
+        self._min_sqft = None
         self._max_sqft = None
         self._min_year_built = None
 
@@ -40,7 +40,7 @@ class HouseFilter(object):
 
     @property
     def min_sqft(self):
-        return self._min_sqrt
+        return self._min_sqft
 
     @property
     def max_sqft(self):
