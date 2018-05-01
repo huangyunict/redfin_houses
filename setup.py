@@ -13,15 +13,14 @@ setup(
     keywords='redfin house'.split(),
     license='GNU LGPLv2+',
     install_requires=[
-        "beautifulsoup4 >= 4.2.1",
         "pyquery >= 1.4.0",
     ],
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: GNU Lesser General Public License v2 or later (LGPLv2+)',
-    	'Natural Language :: English',
-    	'Programming Language :: Python :: 3.5',
+        'Natural Language :: English',
+        'Programming Language :: Python :: 3.6',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ]
 )
