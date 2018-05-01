@@ -3,6 +3,9 @@
 
 import unittest
 
+from redfin_houses.house_filter import HouseFilter, PropertyTypeEnum, PriceEnum, SqftEnum, BathEnum, LotEnum
+from redfin_houses.redfin import query_house_list
+
 
 class RedfinTestCase(unittest.TestCase):
     def setUp(self):
@@ -28,4 +31,4 @@ class RedfinTestCase(unittest.TestCase):
             has_garage=True,
             min_lot_size=LotEnum.SQFT_4500,
             max_lot_size=LotEnum.ACRES_0p5)
-        house_filter = HouseFilter()
+        query_house_list("zipcode/98033", hf)

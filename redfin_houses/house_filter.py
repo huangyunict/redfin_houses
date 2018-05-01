@@ -234,4 +234,4 @@ class HouseFilter(object):
             l.append('min-lot-size=' + str(self.min_lot_size.value))
         if self.max_lot_size:
             l.append('max-lot-size=' + str(self.max_lot_size.value))
-        return '/filter/' + ','.join(l)
+        return 'filter/' + ','.join(l)
