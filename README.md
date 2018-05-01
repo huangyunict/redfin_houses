@@ -1,4 +1,4 @@
 # redfin_houses
 
-Crawl house information from Redfin.
+Python library to retrieve house information from Redfin.
 
