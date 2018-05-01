@@ -2,7 +2,7 @@ from distutils.core import setup
 import setuptools
 
 setup(
-    name='redfin_houses',
+    name='redfin-houses',
     version='0.0.1',
     packages=['redfin_houses'],
     author='Yun Huang',
