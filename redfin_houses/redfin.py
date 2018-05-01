@@ -23,14 +23,15 @@ _REQUEST_HEADER = {
         'keep-alive'
 }
 
-def query_house_list(area_str: str, house_filter: HouseFilter):
+def query_house_list(area_str: str, house_filter: HouseFilter) -> str:
     if area_str.startswith('/'):
         area_str = area_str[1:]
     if area_str.endswith('/'):
         area_str = area_str[:-1]
     url = '/'.join([_REDFIN_PREFIX, area_str, house_filter.to_query_str()])
-    # query html
+    # query list html
     try:
+        logging.info('querying {}'.format(url))
         response = urllib.request.urlopen(urllib.request.Request(url, headers=_REQUEST_HEADER))
     except urllib.error.URLError as e:
         logging.critical('{}: cannot open url: {}'.format(e, url))
@@ -39,5 +40,13 @@ def query_house_list(area_str: str, house_filter: HouseFilter):
     html = pq(response.read())
     link = html('#download-and-save')
     link_url = link.attr('href')
-    print('===')
-    print(link_url)
+    # query linked csv
+    url = '/'.join([_REDFIN_PREFIX, link_url])
+    try:
+        logging.info('querying {}'.format(url))
+        response = urllib.request.urlopen(urllib.request.Request(url, headers=_REQUEST_HEADER))
+    except urllib.error.URLError as e:
+        logging.critical('{}: cannot open url: {}'.format(e, url))
+        raise RuntimeError(e)
+    # get linked csv content
+    return response.read().decode("utf-8")
