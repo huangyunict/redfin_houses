@@ -33,6 +33,33 @@ class RedfinTestCase(unittest.TestCase):
             max_lot_size=LotEnum.ACRES_0p5)
         response = query_house_list("zipcode/98033", hf)
         self.assertGreater(len(response), 0)
-        self.assertTrue(response.startswith(
-            'SALE TYPE,SOLD DATE,PROPERTY TYPE,ADDRESS,CITY,STATE,ZIP,PRICE,BEDS,BATHS,LOCATION,SQUARE FEET,LOT SIZE,YEAR BUILT,DAYS ON MARKET,$/SQUARE FEET,HOA/MONTH,STATUS,NEXT OPEN HOUSE START TIME,NEXT OPEN HOUSE END TIME,URL (SEE http://www.redfin.com/buy-a-home/comparative-market-analysis FOR INFO ON PRICING),SOURCE,MLS#,FAVORITE,INTERESTED,LATITUDE,LONGITUDE'))
-
+        self.assertTrue(
+            response.startswith(','.join([
+                'SALE TYPE',
+                'SOLD DATE',
+                'PROPERTY TYPE',
+                'ADDRESS',
+                'CITY',
+                'STATE',
+                'ZIP',
+                'PRICE',
+                'BEDS',
+                'BATHS',
+                'LOCATION',
+                'SQUARE FEET',
+                'LOT SIZE',
+                'YEAR BUILT',
+                'DAYS ON MARKET',
+                '$/SQUARE FEET',
+                'HOA/MONTH',
+                'STATUS',
+                'NEXT OPEN HOUSE START TIME',
+                'NEXT OPEN HOUSE END TIME',
+                'URL (SEE http://www.redfin.com/buy-a-home/comparative-market-analysis FOR INFO ON PRICING)',
+                'SOURCE',
+                'MLS#',
+                'FAVORITE',
+                'INTERESTED',
+                'LATITUDE',
+                'LONGITUDE',
+            ])))
