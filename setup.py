@@ -9,9 +9,10 @@ setup(
     author_email='huangyunict@gmail.com',
     description='Python library to retrieve house information from Redfin.',
     url='https://github.com/huangyunict/redfin_houses',
-    download_url='http://pypi.python.org/pypi/redfin_houses',
+    download_url='https://pypi.org/project/redfin_houses/',
     keywords='redfin house real estate'.split(),
     license='GNU LGPLv3',
+    python_requires='>=3',
     install_requires=[
         "pyquery >= 1.4.0",
     ],
