@@ -26,11 +26,9 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
-    ]
+    ],
     keywords='redfin house real estate',
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),
-
-    download_url='https://pypi.org/project/redfin_houses/',
     license='GNU LGPLv3',
     python_requires='>=3',
     install_requires=[
