@@ -41,10 +41,11 @@ def query_house_list(area_str: str, house_filter: HouseFilter) -> str:
     html = pq(response.read())
     link_url = html('#download-and-save').attr('href')
     if not link_url:
+        logging.info('empty result for {}'.format(url))
         # TODO: check empty result
         return ''
     # query linked csv
-    url = '/'.join([_REDFIN_PREFIX, link_url])
+    url = _REDFIN_PREFIX + str(link_url)
     try:
         logging.info('querying {}'.format(url))
         response = urllib.request.urlopen(urllib.request.Request(url, headers=_REQUEST_HEADER))
