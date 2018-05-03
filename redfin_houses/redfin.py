@@ -23,6 +23,7 @@ _REQUEST_HEADER = {
         'keep-alive'
 }
 
+
 def query_house_list(area_str: str, house_filter: HouseFilter) -> str:
     if area_str.startswith('/'):
         area_str = area_str[1:]
@@ -38,8 +39,10 @@ def query_house_list(area_str: str, house_filter: HouseFilter) -> str:
         raise RuntimeError(e)
     # get download id
     html = pq(response.read())
-    link = html('#download-and-save')
-    link_url = link.attr('href')
+    link_url = html('#download-and-save').attr('href')
+    if not link_url:
+        # TODO: check empty result
+        return ''
     # query linked csv
     url = '/'.join([_REDFIN_PREFIX, link_url])
     try:
