@@ -5,9 +5,9 @@ Python library to retrieve house information from Redfin.
 ```
 python -m venv venv
 . venv/bin/activate
-pip install -r requirements.txt
 python setup.py build
 python setup.py install
+pip install -r requirements.txt
 ```
 
 ## Use
