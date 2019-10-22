@@ -33,15 +33,15 @@ class RedfinTestCase(unittest.TestCase):
             max_lot_size=LotEnum.ACRES_0p5)
         response = query_house_list("zipcode/98033", hf)
         self.assertGreater(len(response), 0)
-        self.assertTrue(
-            response.startswith(','.join([
+        response_col_names = response.split("\n")[0].strip().split(',')
+        expected_col_names = [
                 'SALE TYPE',
                 'SOLD DATE',
                 'PROPERTY TYPE',
                 'ADDRESS',
                 'CITY',
-                'STATE',
-                'ZIP',
+                'STATE OR PROVINCE',
+                'ZIP OR POSTAL CODE',
                 'PRICE',
                 'BEDS',
                 'BATHS',
@@ -62,4 +62,13 @@ class RedfinTestCase(unittest.TestCase):
                 'INTERESTED',
                 'LATITUDE',
                 'LONGITUDE',
-            ])))
+        ]
+        self.assertEqual(len(expected_col_names), len(response_col_names))
+        for a, b in zip(expected_col_names, response_col_names):
+            if a != b:
+                print("[{}] != [{}]".format(a, b))
+        self.assertEqual(expected_col_names, response_col_names)
+
+
+if __name__ == "__main__":
+    unittest.main()
