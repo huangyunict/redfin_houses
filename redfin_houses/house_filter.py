@@ -10,6 +10,7 @@ class PropertyTypeEnum(Enum):
     TOWN_HOUSE = 'townhouse'
     MULTI_FAMILY = 'multifamily'
     LAND = 'land'
+    OTHER = 'other'
 
 
 class PriceEnum(Enum):
