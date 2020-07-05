@@ -63,3 +63,7 @@ class RedfinTestCase(unittest.TestCase):
                 'LATITUDE',
                 'LONGITUDE',
             ])))
+
+
+if __name__ == '__main__':
+    unittest.main()

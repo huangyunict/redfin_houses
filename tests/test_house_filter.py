@@ -39,3 +39,7 @@ class HouseFilterTestCase(unittest.TestCase):
             open_house=OpenHouseEnum.OPEN_HOUSE_THISWEEKEND)
         hf_full_str = 'filter/property-type=house+condo,min-price=850k,max-price=2M,min-beds=2,max-beds=5,min-baths=1.25,min-sqft=750-sqft,max-sqft=3k-sqft,min-year-built=1970,max-year-built=2010,has-garage,min-lot-size=4.5k-sqft,max-lot-size=0.5-acre,hoa=1000,open-house=thisweekend'
         self.assertEqual(hf_full.to_query_str(), hf_full_str)
+
+
+if __name__ == '__main__':
+    unittest.main()
