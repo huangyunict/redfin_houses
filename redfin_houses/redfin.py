@@ -8,7 +8,7 @@ from pyquery import PyQuery as pq
 import urllib.request
 import urllib.error
 
-_REDFIN_PREFIX = 'https://www.redfin.com'
+_DOMAIN_PREFIX = 'https://www.redfin.com'
 
 _REQUEST_HEADER = {
     'User-Agent':
@@ -29,7 +29,7 @@ def query_house_list(area_str: str, house_filter: HouseFilter) -> str:
         area_str = area_str[1:]
     if area_str.endswith('/'):
         area_str = area_str[:-1]
-    url = '/'.join([_REDFIN_PREFIX, area_str, house_filter.to_query_str()])
+    url = '/'.join([_DOMAIN_PREFIX, area_str, house_filter.to_query_str()])
     # query list html
     try:
         logging.info('querying {}'.format(url))
@@ -45,7 +45,7 @@ def query_house_list(area_str: str, house_filter: HouseFilter) -> str:
         # TODO: check empty result
         return ''
     # query linked csv
-    url = _REDFIN_PREFIX + str(link_url)
+    url = _DOMAIN_PREFIX + str(link_url)
     try:
         logging.info('querying {}'.format(url))
         response = urllib.request.urlopen(urllib.request.Request(url, headers=_REQUEST_HEADER))
