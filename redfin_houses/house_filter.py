@@ -69,6 +69,7 @@ class PriceEnum(Enum):
 class BathEnum(Enum):
     BATH_1 = '1'
     BATH_1p25 = '1.25'
+    BATH_1p5 = '1.5'
     BATH_2 = '2'
     BATH_3 = '3'
     BATH_4 = '4'
