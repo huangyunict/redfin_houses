@@ -5,7 +5,7 @@ chardet==3.0.4
 cssselect==1.1.0
 html5lib==1.0.1
 idna==2.8
-lxml==4.4.1
+lxml==4.6.5
 numpy==1.17.3
 pandas==0.25.2
 pyquery==1.4.0
