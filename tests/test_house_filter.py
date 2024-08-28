@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-# coding=utf-8
-
 import unittest
 from redfin_houses.house_filter import HouseFilter, PropertyTypeEnum, PriceEnum, BathEnum, SqftEnum, LotEnum, HOAEnum, \
     OpenHouseEnum
