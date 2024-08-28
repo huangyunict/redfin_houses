@@ -1,0 +1,32 @@
+[build-system]
+requires = ["hatchling", "hatch-requirements-txt"]
+build-backend = "hatchling.build"
+
+[project]
+name = "redfin-houses"
+version = "0.0.3"
+authors = [
+  { name = "Yun Huang", email = "huangyunict@gmail.com" },
+]
+maintainers = [
+  { name = "Yun Huang", email = "huangyunict@gmail.com" },
+]
+description = "Python library to retrieve house information from Redfin"
+readme = "README.md"
+requires-python = ">=3.8"
+dynamic = ["dependencies"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)",
+    "Operating System :: OS Independent",
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[project.urls]
+homepage = "https://github.com/huangyunict/redfin_houses"
+issues = "https://github.com/huangyunict/redfin_houses/issues"
+
+[tool.hatch.metadata.hooks.requirements_txt]
+files = ["requirements.txt"]
