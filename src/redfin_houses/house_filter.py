@@ -132,6 +132,7 @@ class OpenHouseEnum(Enum):
 
 
 class HouseFilter(object):
+
     def __init__(self,
                  property_type_list: list = None,
                  min_price: PriceEnum = None,
@@ -148,10 +149,11 @@ class HouseFilter(object):
                  max_lot_size: LotEnum = None,
                  max_hoa: HOAEnum = None,
                  open_house: OpenHouseEnum = None):
-        self._check_and_set(list, '_property_type_list', property_type_list, list())
-        self._check_and_set(PriceEnum,'_min_price',min_price)
-        self._check_and_set(PriceEnum, '_max_price',max_price)
-        self._check_and_set(int, '_min_beds',min_beds)
+        self._check_and_set(list, '_property_type_list', property_type_list,
+                            list())
+        self._check_and_set(PriceEnum, '_min_price', min_price)
+        self._check_and_set(PriceEnum, '_max_price', max_price)
+        self._check_and_set(int, '_min_beds', min_beds)
         self._check_and_set(int, '_max_beds', max_beds)
         self._check_and_set(BathEnum, '_min_baths', min_baths)
         self._check_and_set(SqftEnum, '_min_sqft', min_sqft)
@@ -171,8 +173,8 @@ class HouseFilter(object):
                        default_value=None):
         assert property_value is None or isinstance(property_value,
                                                     property_cls)
-        setattr(self, property_name, property_value
-                if property_value else default_value)
+        setattr(self, property_name,
+                property_value if property_value else default_value)
 
     @property
     def property_type_list(self) -> list:
@@ -238,7 +240,7 @@ class HouseFilter(object):
         l = list()
         if self._property_type_list:
             l.append('property-type=' +
-                 '+'.join([str(x.value) for x in self.property_type_list]))
+                     '+'.join([str(x.value) for x in self.property_type_list]))
         if self._min_price:
             l.append('min-price=' + str(self._min_price.value))
         if self.max_price:

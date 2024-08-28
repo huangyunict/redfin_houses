@@ -3,11 +3,14 @@ import pandas as pd
 import requests
 import argparse
 from pyquery import PyQuery as pq
-from redfin_houses.redfin import _REDFIN_PREFIX, _REQUEST_HEADER
+from src.redfin_houses.redfin import _REDFIN_PREFIX, _REQUEST_HEADER
 
 
 def parse_links(doc: pq) -> Set:
-    links = {"{}{}".format(_REDFIN_PREFIX, x.attrib['href']) for x in doc.find('a')}
+    links = {
+        "{}{}".format(_REDFIN_PREFIX, x.attrib['href'])
+        for x in doc.find('a')
+    }
     return links
 
 
@@ -29,9 +32,12 @@ def get_details(uri):
     else:
         raise Exception("can't get url")
     result = dict()
-    result['marketing-remarks'] = parse_text(doc.find('#marketing-remarks-scroll'))
-    result['property-details'] = parse_text(doc.find('#property-details-scroll'))
-    result['property-history'] = parse_table(doc.find('#property-history-scroll'))
+    result['marketing-remarks'] = parse_text(
+        doc.find('#marketing-remarks-scroll'))
+    result['property-details'] = parse_text(
+        doc.find('#property-details-scroll'))
+    result['property-history'] = parse_table(
+        doc.find('#property-history-scroll'))
     result['schools'] = parse_table(doc.find('#schools-scroll'))
     result['similar-homes'] = parse_links(doc.find('#lsis-listings'))
     result['recently-sold'] = parse_links(doc.find('#lsis-solds'))
@@ -39,7 +45,8 @@ def get_details(uri):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Get details from redfin given url')
+    parser = argparse.ArgumentParser(
+        description='Get details from redfin given url')
     parser.add_argument('--url', required=True, help="Property url")
     args = parser.parse_args()
     print("Getting details from {}".format(args.url))
@@ -48,4 +55,3 @@ if __name__ == "__main__":
         print(k)
         print(v)
         print()
-
